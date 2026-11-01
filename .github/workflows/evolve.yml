@@ -1,0 +1,10 @@
+name: Evolve
+on: {schedule:[{cron:'0 */12 * * *'}], workflow_dispatch: {}}
+jobs:
+  e:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: |
+          git config user.name "Bot"; git config user.email "bot@zyon.ai"
+          git add -A; git commit -m "auto: evolve" || exit 0; git push
